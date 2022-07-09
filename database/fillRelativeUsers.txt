@@ -1,0 +1,60 @@
+$u = new App\Models\User()
+$u->name = 'Emma Watson'
+$u->login = '@emma-watson';
+$u->photo = 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Emma_Watson_2013.jpg';
+$u->about = 'she/her';
+$u->email = 'emma-watson@gmail.com';
+$u->city = 'London';
+$u->website = 'emma-watson.com';
+$u->birthday = '1990-04-15';
+$u->password = bcrypt('0000');
+$u->save();
+
+$u = new App\Models\User()
+$u->name = 'Carlo Ancelotti'
+$u->login = '@mrancelotti';
+$u->photo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Carlo_Ancelotti_2016_%28cropped%29.jpg/640px-Carlo_Ancelotti_2016_%28cropped%29.jpg';
+$u->about = 'Real Madrid';
+$u->email = 'mrancelotti@gmail.com';
+$u->city = 'Milano';
+$u->website = 'mrancelotti.com';
+$u->birthday = '1959-10-06';
+$u->password = bcrypt('0000');
+$u->save();
+
+$u = new App\Models\User()
+$u->name = 'Avril Lavigne'
+$u->login = '@avrillavigne';
+$u->photo = 'https://upload.wikimedia.org/wikipedia/ru/thumb/d/dd/Love_Sux.jpg/800px-Love_Sux.jpg';
+$u->about = 'My new album “Love Sux” is out now and I`m on tour';
+$u->email = 'avrillavigne@gmail.com';
+$u->city = 'New York';
+$u->website = 'avrillavigne.com';
+$u->birthday = '1984-09-27';
+$u->password = bcrypt('0000');
+$u->save();
+
+$u = new App\Models\User()
+$u->name = 'Dalai Lama'
+$u->login = '@dalailama14';
+$u->photo = 'https://upload.wikimedia.org/wikipedia/commons/5/55/Dalailama1_20121014_4639.jpg';
+$u->about = 'Where ignorance is our master, there is no possibility of real peace';
+$u->email = 'dalailama14@gmail.com';
+$u->city = 'New Deli';
+$u->website = 'dalailama14.com';
+$u->birthday = '1935-06-06';
+$u->password = bcrypt('0000');
+$u->save();
+
+$u = new App\Models\User()
+$u->name = 'Stas Peftiev'
+$u->login = '@stani';
+$u->photo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQLaa4gZqJ1daO8Ypq8CxEVgboVIZONfIxYw&usqp=CAU';
+$u->about = 'git-talks creator';
+$u->email = 'stani@gmail.com';
+$u->city = 'Kyiv';
+$u->website = 'stani.com';
+$u->birthday = '1992-09-30';
+$u->password = bcrypt('0000');
+$u->save();
+
