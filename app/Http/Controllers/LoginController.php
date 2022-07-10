@@ -27,4 +27,23 @@ class LoginController extends Controller
     public function logout() {
         Auth::logout();
     }
+
+    public function authMe(Request $request) {
+        if (!$request->user()) {
+            return [
+                'isAuth' => false,
+                'message' => 'Not authorized',
+            ];
+        }
+
+        return [
+            'isAuth' => true,
+            'userData' => [
+                'id' => $request->user()->id,
+                'name' => $request->user()->name,
+                'login' => $request->user()->login,
+                'photo' => $request->user()->photo,
+            ]
+        ];
+    }
 }
