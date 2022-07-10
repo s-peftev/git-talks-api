@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FollowingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -12,4 +13,9 @@ Route::post('/auth/me', [LoginController::class, 'authMe']);
 Route::get('/users', [UserController::class, 'index'])
     ->middleware('auth:sanctum');
 Route::get('/users/{id}', [UserController::class, 'show'])
+    ->middleware('auth:sanctum');
+
+Route::post('/follow/{id}', [FollowingController::class, 'follow'])
+    ->middleware('auth:sanctum');
+Route::delete('/follow/{id}', [FollowingController::class, 'unfollow'])
     ->middleware('auth:sanctum');

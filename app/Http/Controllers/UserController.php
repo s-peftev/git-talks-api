@@ -9,17 +9,29 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $countPerPage = min((int)$request->count, 50);
-        $totalCount = User::all()->count();
-        $allUsers = User::simplePaginate($countPerPage);
+        $authorizedUser = $request->user();
+        $followedUsersId = $authorizedUser->subscriptions()
+            ->map(function ($subscription) {
+                return $subscription->followed_id;
+            })->toArray();
 
-        foreach($allUsers as $user) {
-            $user->followed = false;
+        $countPerPage = min((int)$request->count, 50);
+
+        $query = User::query()->select('users.*')
+            ->where('id', '!=', $authorizedUser->id);
+        $totalUsersCount = $query->get()->count();
+        $allUsers = $query->simplePaginate($countPerPage);
+        foreach ($allUsers as $user) {
+            if(in_array($user->id, $followedUsersId)) {
+                $user->followed = true;
+            } else {
+                $user->followed = false;
+            }
         }
 
         return [
             'items' => $allUsers,
-            'totalCount' => $totalCount,
+            'totalCount' => $totalUsersCount,
         ];
     }
 

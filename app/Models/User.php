@@ -47,4 +47,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function subscriptions()
+    {
+        $query = Following::query()->select('followings.*')
+            ->where('subscriber_id', $this->id);
+
+        return $query->get();
+    }
+
 }
