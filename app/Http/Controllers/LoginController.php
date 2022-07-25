@@ -46,7 +46,7 @@ class LoginController extends Controller
                 'id' => $request->user()->id,
                 'name' => $request->user()->name,
                 'login' => $request->user()->login,
-                'photo' => $request->user()->photo,
+                'photo' => UserController::setUserPhotoURL($request->user())->photo,
             ]
         ];
     }
