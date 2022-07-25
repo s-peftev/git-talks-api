@@ -16,12 +16,16 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, true)) {
             $request->session()->regenerate();
 
-            return $request->user();
+            return [
+                'loginStatus' => 'success',
+                'userData' => $request->user()
+                ];
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        return [
+            'loginStatus' => 'fail',
+            'message' => 'Wrong email or password'
+        ];
     }
 
     public function logout() {

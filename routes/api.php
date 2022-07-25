@@ -14,6 +14,8 @@ Route::get('/users', [UserController::class, 'index'])
     ->middleware('auth:sanctum');
 Route::get('/users/{id}', [UserController::class, 'show'])
     ->middleware('auth:sanctum');
+Route::put('/user/photo', [UserController::class, 'updateUserPhoto'])
+    ->middleware('auth:sanctum');
 
 Route::post('/follow/{id}', [FollowingController::class, 'follow'])
     ->middleware('auth:sanctum');
